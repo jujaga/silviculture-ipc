@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const IPCPlan = sequelize.define('IPCPlan', {
-    ipcPlanId: {
+  const Answer = sequelize.define('Answer', {
+    answerId: {
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
@@ -274,13 +274,13 @@ module.exports = (sequelize, DataTypes) => {
       unique: false
     }
   }, {
-    comment: 'List of all IPC plan answers',
-    tableName: 'ipc_plan'
+    comment: 'List of all IPC submission answers',
+    tableName: 'silvipc_answer'
   });
-  IPCPlan.associate = models => {
-    IPCPlan.belongsTo(models.Business, {
-      foreignKey: 'businessId'
+  Answer.associate = models => {
+    Answer.belongsTo(models.Submission, {
+      foreignKey: 'submissionId'
     });
   };
-  return IPCPlan;
+  return Answer;
 };

@@ -17,14 +17,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     comment: 'List of all businesses',
-    tableName: 'business'
+    tableName: 'silvipc_business'
   });
   Business.associate = models => {
-    Business.hasMany(models.Contact, {
-      foreignKey: 'businessId'
+    Business.belongsTo(models.Submission, {
+      foreignKey: 'submissionId'
     });
-    Business.hasOne(models.IPCPlan, {
-      foreignKey: 'businessId'
+    Business.hasOne(models.Address, {
+      foreignKey: 'addressId'
+    });
+    Business.hasMany(models.Contact, {
+      foreignKey: 'contactId'
     });
   };
   return Business;

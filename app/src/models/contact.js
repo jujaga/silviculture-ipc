@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         isUUID: 4
       }
     },
+    contactType: {
+      allowNull: false,
+      comment: 'Contact type',
+      type: DataTypes.STRING(30),
+      unique: false
+    },
     firstName: {
       allowNull: false,
       comment: 'Contact first name',
@@ -41,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     comment: 'List of all contacts',
-    tableName: 'contact'
+    tableName: 'silvipc_contact'
   });
   Contact.associate = models => {
     Contact.belongsTo(models.Business, {
